@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>TommyCo Coffee | Artisan Cafe • Walk-in & Track Order</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+<header class="navbar">
+ <div class="logo">
+  <a href="index.html">
+    <img src="tommycologo.jpg" alt="TommyCo Logo" class="logo-img">
+    <span>TommyCo</span>
+  </a>
+</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#menu">Menu</a>
+    <a href="#promos">Promos</a>
+    <a href="#home">Track Order</a>
+    <button class="cart-badge" id="cartIconBtn"><i class="fas fa-bag-shopping"></i> Cart (<span id="cartItemCount">0</span>)</button>
+  </div>
+</header>
+
+<section id="home" style="padding:0;">
+  <div class="hero">
+    <div class="hero-container">
+      <div class="hero-left">
+        <h1>Walk in. Order. Track. Enjoy.</h1>
+        <p>Order your brew, get a unique order number, track its status, and download your invoice as a JPG image to show the cashier.</p>
+        <div class="track-section">
+          <input type="text" id="trackOrderInput" placeholder="Enter order number (e.g., TC-1234)" />
+          <button class="btn-primary" id="trackBtn" style="padding: 12px 24px;">Track</button>
+        </div>
+        <div id="trackResultPanel" class="track-panel">
+          <h3><i class="fas fa-search"></i> Order Status</h3>
+          <div id="trackDetails"></div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="tommycohomepage.jpg" alt="TommyCo Coffee Shop" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT US SECTION - NEWLY ADDED -->
+<section id="about">
+  <div class="section-header"><h2>About Us</h2></div>
+  <div class="about-container">
+    <div class="about-text">
+      <h3>More Than Just Coffee</h3>
+      <p>TommyCo Coffee was born from a simple dream in 2020 — to create a space where every cup tells a story. But before the coffee shop existed, there was Tommy — a faithful dog who sat so quiet, so comforting, so joyful, so amiable every day.</p>
+      <p>When Tommy passed, all that was left was the feeling of gratitude and love of the moments spent together. TommyCo Coffee was born in his memory not only as a business, but also as a place that would be as warm as he used to be. It began as a small neighborhood cart in Sta. Ana has developed into a favorite neighborhood where friends get together, ideas are generated and memories are created.</p>
+      <p>We source our beans directly from local farmers in the Philippines, ensuring fair trade and the freshest roast. Every barista at TommyCo is trained to craft each drink with precision and heart. Our mission is simple: serve exceptional coffee while making everyone feel like family — just like Tommy always did.</p>
+ <div class="about-features">
+
+  <div class="about-feature">
+    <i class="fab fa-facebook"></i>
+    <a href="https://www.facebook.com/profile.php?id=100063896115830" target="_blank">
+      TommyCo Coffee on Facebook
+    </a>
+  </div>
+
+  <div class="about-feature">
+    <i class="fab fa-instagram"></i>
+    <a href="https://www.instagram.com/tommyco_cafe?fbclid=IwY2xjawQ-1U1leHRuA2FlbQIxMABicmlkETFvbk1BcmI2bFM2OXlhZnlOc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHq9R8izgAvqz1yPkbOLAPX0zcLCH6H7ciMxxXGc1DNjAiV_rX5bj4ppPUzp9_aem_DkpabtQSv-x9ThNJUDl6gw" target="_blank">
+      TommyCo Coffee on Instagram
+    </a>
+  </div>
+
+<div class="about-feature">
+  <i class="fas fa-envelope"></i>
+  tommyco.2023@gmail.com
+  </a>
+</div>
+
+<div class="about-feature">
+  <i class="fas fa-phone"></i> 
+0961-933-5676
+</div>
+
+</div>
+      <p class="signature">— Mr. Martin Magundayao, Founder</p>
+    </div>
+    <div class="about-image">
+      <div class="carousel">
+        <div class="carousel-container">
+          <img src="tommycobackground.jpg" alt="TommyCo Cafe Interior" class="carousel-img active">
+          <img src="tommycobackground2.jpg" alt="TommyCo Cafe Interior 2" class="carousel-img">
+          <img src="tommycobackground3.jpg" alt="TommyCo Cafe Interior 3" class="carousel-img">
+        </div>
+        <button class="carousel-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+        <div class="carousel-dots">
+          <span class="dot active" onclick="currentSlide(0)"></span>
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section id="menu">
+  <div class="section-header"><h2>Our Menu</h2></div>
+  <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<section id="promos">
+  <div class="section-header"><h2>Promos & Discount</h2></div>
+  <div class="promos-grid" id="promosContainer"></div>
+</section>
+
+<!-- Hidden Receipt Template for Image Capture -->
+<div id="receiptCaptureTemplate" class="receipt-capture-area" style="width: 500px; background: white; padding: 2rem; border-radius: 28px;">
+  <div style="text-align: center; border-bottom: 2px dashed #C47A2E; padding-bottom: 1rem;">
+    <i class="fas fa-mug-hot" style="font-size: 2.5rem; color: #C47A2E;"></i>
+    <h2 style="color: #2C241A; margin: 0.5rem 0;">TommyCo Coffee</h2>
+    <p style="color: #6B4F3A;">2284 Road15 Fabie Estate Sta. Ana</p>
+  </div>
+  <div id="receiptContent" style="margin: 1.5rem 0;">
+    <!-- dynamic content -->
+  </div>
+  <div style="border-top: 1px dashed #E0D4C8; padding-top: 1rem; text-align: center; font-size: 0.75rem; color: #8B7355;">
+    <p>Thank you for walking in! Show this JPG invoice to the cashier.</p>
+    <p>✨ Keep your order number for tracking ✨</p>
+  </div>
+</div>
+
+<!-- Cart Drawer -->
+<div class="cart-drawer" id="cartDrawer">
+  <div style="display: flex; justify-content: space-between; margin-bottom: 1.5rem;">
+    <h3><i class="fas fa-shopping-cart"></i> Your Order</h3>
+    <i class="fas fa-times" id="closeCart" style="cursor:pointer; font-size: 1.3rem;"></i>
+  </div>
+  <div id="cartItemsList"></div>
+  <div style="font-size: 1.5rem; font-weight: 800; margin: 1rem 0;">Total: ₱<span id="cartTotal">0</span></div>
+  <button class="btn-primary" id="checkoutBtn" style="width:100%;">Place Order → Get JPG Invoice</button>
+  <div style="margin-top: 1rem; font-size: 0.75rem; background: #FDF3E0; padding: 12px; border-radius: 20px;" id="receiptPreview"></div>
+</div>
+
+<!-- Order Confirmation Modal -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal-content">
+    <i class="fas fa-check-circle" style="font-size: 3rem; color: #2E7D64;"></i>
+    <h2>Order Confirmed! 🎉</h2>
+    <div id="modalOrderNumber" class="order-number-box">TC-0000</div>
+    <p id="modalMessage">Your invoice has been downloaded as a JPG image. Please show it to the cashier when paying.</p>
+    <button class="btn-primary" id="closeModalBtn" style="margin-top: 1rem;">Got it</button>
+  </div>
+</div>
+
+<!-- Chatbot -->
+<div class="chat-fab">
+  <div class="chat-button" id="chatFab"><i class="fas fa-comment-dots"></i></div>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header"><span>☕ TommyBarista</span><i class="fas fa-times" id="closeChat" style="cursor:pointer;"></i></div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="bot-msg">Hi! Ask me about our story, menu, promos, order tracking, or JPG invoices!</div>
+    </div>
+    <div style="display: flex; border-top: 1px solid #eee;">
+      <input type="text" id="chatInput" placeholder="Ask anything..." style="flex:1; padding: 12px; border: none; outline: none;">
+      <button id="sendChat" style="background: #C47A2E; border: none; padding: 0 18px; color: white;"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>© 2026 TommyCo Coffee. All rights reserved.</p>
+  <p class="developers">
+    Developed by: Ethan Manalili • Keon Lauzon • Victor Tarra (De La Salle - College of Saint Benilde - BSIS Students)
+  </p>
+</footer>
+
+
+
+</body>
+</html>
