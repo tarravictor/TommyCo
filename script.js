@@ -272,12 +272,13 @@
   function botReply(text) {
     let lower = text.toLowerCase();
     if(lower.includes('about') || lower.includes('story') || lower.includes('founder')) {
-      return "TommyCo was founded by Tommy Guerrero in 2020. We started as a small cart in Sta. Ana and now we're a beloved community cafe! We source local beans from Benguet and Batangas. ☕";
+      return "TommyCo was founded by Mr. Martin Magundayao in 2020. We started as a small cart in Sta. Ana and now we're a beloved community cafe! We source local beans from the community. ☕";
     }
     if(lower.includes('track')) return "Go to the Track Order section and enter your order number like TC-1234!";
     if(lower.includes('jpg') || lower.includes('invoice') || lower.includes('receipt')) return "After placing an order, your invoice is automatically downloaded as a JPG image. Show it to the cashier! 📸";
     if(lower.includes('menu')) return "We have Espresso, Latte, Mocha, Matcha, Spanish Latte, Cold Brew, and more! Check the Menu section 🍵";
-    if(lower.includes('promo')) return "Happy Hour 3-6PM (20% off), BOGO Wednesdays, Student P99 Iced Latte, and Midnight Brew after 10PM!";
+    if(lower.includes('promo')) return "TommyCo Frappe is Finally Here!
+Launching October 3, 2025 at 3PM—enjoy 10% OFF on all flavors! ☕";
     if(lower.includes('location') || lower.includes('address')) return "📍 2284 Road15 Fabie Estate Sta. Ana, Manila. Open 3 PM to 12 AM daily!";
     return "I'm TommyBarista! Ask me about our story, menu, promos, order tracking, location, or JPG invoices. ☕";
   }
